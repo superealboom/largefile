@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>大文件分片上传</title>
+    <script type='text/javascript' th:src="@{/js/jquery-3.7.1.min.js}"></script>
+    <script type='text/javascript' th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <script type='text/javascript' th:src="@{/modules/largefile/index.js}"></script>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+</head>
+
+<body class="bg-primary-subtle">
+<div class="container">
+    <div class="input-group" style="margin-top:20%">
+        <input type="file" class="form-control" id="file">
+        <button class="btn btn-success" onclick="uploadFileByForm()" type="button">上传</button>
+        <button class="btn btn-success" hidden="hidden" onclick="uploadFileByJson()" type="button">上传(json)</button>
+    </div>
+</div>
+
+<!-- 提示框 -->
+<div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="messageModalLabel">上传结果</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="messageModalBody">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script th:inline="javascript">
+    const PATH = [[${#httpServletRequest.getContextPath()}]]
+</script>
+</html>
